@@ -27,37 +27,31 @@
 #include <bitset>
 using namespace std;
 int main() {
-    int i,j,t,n,k;
+    long long i,j,k,n,t;
     cin>>t;
     while(t--){
-        cin>>n>>k;
-        vector<pair<int,int>>a(n);
+        cin>>n;
+        vector<long long>a(n);
         for(i=0;i<n;i++){
-            cin>>a[i].first;
-            a[i].second=i+1;
+            cin>>a[i];
         }
-        vector<int>ans;
-        while(!a.empty()){
-                        auto it=max_element(a.begin(),a.end(),
-            [](auto p1, auto p2){
-
-                if(p1.first==p2.first)
-                    return p1.second>p2.second;
-
-                return p1.first<p2.first;
-            });
-
-            it->first-=k;
-            if(it->first<=0){
-                ans.push_back(it->second);
-                a.erase(it);
+        long long flip=0;
+        vector<long long>ans;
+        for(i=n-1;i>=0;i--){
+            long long curr = a[i];
+             if(flip%2!=0){
+                curr=-curr;
+            }
+            if(curr>0){
+                ans.push_back(i+1);
+                flip++;
             }
         }
-        for(auto x : ans){
-            cout<<x<<" ";
-        }
-        cout<<endl;
-        
+            cout<<ans.size()<<endl;
+            for(i=0;i<ans.size();i++){
+                cout<<ans[i]<<" ";
+            }
+            cout<<endl;
     }
 
     return 0;
