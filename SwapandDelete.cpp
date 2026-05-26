@@ -34,13 +34,42 @@ int main() {
         cin>>s;
         if(s.size()==0){
             cout<<0<<endl;
+            continue;
         }
         if(s.size()==1){
             cout<<1<<endl;
+            continue;
         }
-        
+        int zero =0,one =0;
+        for(auto x : s){
+            if(x=='0')zero++;
+            else one++;
+        }
+        if(one==zero){
+            cout<<0<<endl;
+            continue;
+        }
 
-
+        int ans =0;
+        for(i=0;i<s.size();i++){
+            if(s[i]=='0'){
+                if(one>0){
+                    one--;
+                }else{
+                    ans = s.size()-i;
+                    break;
+                }
+            }else{
+                if (zero > 0) {
+                    zero--;
+                }
+                else {
+                    ans = s.size() - i;
+                    break;
+                }
+            }
+        }
+        cout<<ans<<endl;
     }
 
     return 0;
