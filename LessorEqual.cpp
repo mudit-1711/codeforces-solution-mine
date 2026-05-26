@@ -27,34 +27,38 @@
 #include <bitset>
 using namespace std;
 int main() {
-    int i,j,n,m;
-    cin>>n>>m;
-    vector<pair<int,int>>a(n);
+    int i,j,k,n,t;
+    cin>>n>>k;
+    vector<int>a(n);
     for(i=0;i<n;i++){
-        int x;
-        cin>>x;
-        a[i].first = x;
-        a[i].second = i+1;
+        cin>>a[i];
     }
-    if(a.size()==1){
-        cout<<1<<endl;
-        return 0;
+    sort(a.begin(),a.end());
+    if(k == 0) {
+        if(a[0] == 1)
+            cout << -1;
+        else
+            cout << 1;
     }
-    while(!a.empty()){
-        if(a[0].first<=m){
-            a.erase(a.begin());
+    else {
+        int num = a[k - 1];
+
+        int len = 0;
+
+        for(i = 0; i < n; i++) {
+            if(a[i] <= num) {
+                len++;
+            }
         }
-        if(a[0].first>m){
-            a[0].first=a[0].first-m;
-            int temp1 = a[0].first;
-            int temp2 = a[0].second;
-            a.erase(a.begin());
-            a.push_back({temp1,temp2});
+
+        if(len == k) {
+            cout << num;
         }
-        if(a.size()==1){
-            cout<<a[0].second<<endl;
-            break;
+        else {
+            cout << -1;
         }
     }
+
+
     return 0;
 }
