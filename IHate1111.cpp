@@ -27,28 +27,19 @@
 #include <bitset>
 using namespace std;
 int main() {
-    int i,j,k,n,t;
+    int i,j,x,t,n;
     cin>>t;
     while(t--){
-        cin>>n;
-        string s;
-        cin>>s;
-        vector<int>pref(n),suff(n);
-        set<char>st;
-        for(i=0;i<n;i++){
-            st.insert(s[i]);
-            pref[i]=st.size();
+        cin>>x;
+        bool ok =false;
+        for(i=0;i*111<=x;i++){
+            if((x-i*111)%11==0){
+                ok = true;
+                break;
+            }
         }
-        st.clear();
-        for(i=n-1;i>=0;i--){
-            st.insert(s[i]);  
-            suff[i]=st.size();
-        }
-        int ans = INT_MIN;
-        for(i=0;i<n-1;i++){
-            ans=max(ans,pref[i]+suff[i+1]);
-        }
-        cout<<ans<<endl;
+        if(ok)cout<<"YES"<<endl;
+        else cout<<"NO"<<endl;
     }
 
     return 0;
