@@ -27,23 +27,11 @@
 #include <bitset>
 using namespace std;
 int main() {
-    int i,j,t,n,k;
-    cin>>t;
-    while(t--){
-        cin>>n>>k;
-        vector<pair<int,int>>a(n);
-        for(i=0;i<n;i++){
-            cin>>a[i].first;
-            a[i].second=i+1;
-        }
-        vector<int>ans;
-        
-        for(auto x : ans){
-            cout<<x<<" ";
-        }
-        cout<<endl;
-        
-    }
+    int l,r;
+    cin>>l>>r;
+    if(l==r)cout<<l;
+    else
+    cout<<2;
 
     return 0;
 }
