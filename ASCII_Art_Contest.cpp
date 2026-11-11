@@ -15,6 +15,5 @@ int main(){
     }else{
         cout<<"final"<<" "<<ans[1];
     }
-
     return 0;
 }
