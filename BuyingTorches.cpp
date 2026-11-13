@@ -34,7 +34,6 @@ int main() {
         long long need = k*y + k-1;
         long long ans = (need +(x-2))/(x-1);
         cout<<ans+k<<endl;
-
     }
 
     return 0;
